@@ -1,4 +1,4 @@
-let productList = [
+let productList1 = [
     {
         "id":"2e36e6a6-21f5-46af-a16f-9b9d57fc9dcf",
         "name":"Handcrafted Fresh Towels",
@@ -295,7 +295,10 @@ let productList = [
         "description":"Recusandae consequatur corporis. Facere error eum perspiciatis.",
         "image":"https://picsum.photos/id/1029/500/500/",
         "category":"Shoes"
-    },
+    }
+]
+
+let productList2 = [
     {
         "id":"fe124bb6-3fd9-4cf4-a3db-64c1cd88fdbe",
         "name":"Generic Steel Shoes",
@@ -637,7 +640,10 @@ let productList = [
         "description":"Sapiente illo doloremque dolores voluptatibus eos quas. Assumenda deserunt aut officia. Fugit debitis culpa.",
         "image":"https://picsum.photos/id/1067/500/500/",
         "category":"Industrial"
-    },
+    }
+]
+
+let productList3 = [
     {
         "id":"a0234578-1fa8-4996-87f7-12780341246f",
         "name":"Unbranded Wooden Soap",
@@ -892,4 +898,16 @@ let productList = [
     }
 ]
 
-export default productList;
+function getProductsForCategory(categoryId) {
+    if (categoryId == 1) {
+        return [...productList1]
+    } else if (categoryId == 2) {
+        return [...productList2]
+    } else if (categoryId == 3) {
+        return [...productList3]
+    } else {
+        return []
+    }
+}
+
+export default getProductsForCategory;

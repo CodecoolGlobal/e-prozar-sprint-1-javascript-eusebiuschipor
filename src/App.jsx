@@ -1,40 +1,58 @@
-import productList from "./productList";
-import { useState } from "react";
-import language from "./language";
-import Filters from "./components/filters";
-import ProductList from "./components/productList";
-import Coupon from "./components/coupon";
-import Promotion from "./components/promotion";
+// import productList from "./productList";
+// import { useState } from "react";
+// import language from "./language";
+// import Filters from "./components/filters";
+// import ProductList from "./components/productList";
+// import Coupon from "./components/coupon";
+import Promotion from "./pages/promotion";
+import Categories from "./pages/categories"
+import { HashRouter, Link, Switch, Route } from 'react-router-dom';
 
 const App = () => {
-    const [filteredList, setFilteredList] = useState(productList);
+    // const [filteredList, setFilteredList] = useState(productList);
 
-    const [selectedLanguage, setSelectedLanguage] = useState(language.english)
+    // const [selectedLanguage, setSelectedLanguage] = useState(language.english)
 
 
-    function updateFilteredList(products) {
-        setFilteredList([...products]);
-    }
+    // function updateFilteredList(products) {
+    //     setFilteredList([...products]);
+    // }
 
-    const setLanguage = (newLanguage) => {
-        setSelectedLanguage(newLanguage);
-    }
+    // const setLanguage = (newLanguage) => {
+    //     setSelectedLanguage(newLanguage);
+    // }
 
     return (
-        <div>            
-            <Promotion selectedLanguage = {selectedLanguage} />
+        // <div>            
+        //     <Promotion selectedLanguage = {selectedLanguage} />
 
-            <Filters updateFilteredList = {updateFilteredList} setLanguage = {setLanguage} />
+        //     <Filters updateFilteredList = {updateFilteredList} setLanguage = {setLanguage} />
 
-            <Coupon products = {filteredList} updateFilteredList = {updateFilteredList} selectedLanguage = {selectedLanguage}/>
+        //     <Coupon products = {filteredList} updateFilteredList = {updateFilteredList} selectedLanguage = {selectedLanguage}/>
 
-            <ProductList products = {filteredList} updateFilteredList = {updateFilteredList} selectedLanguage = {selectedLanguage} />
+        //     <ProductList products = {filteredList} updateFilteredList = {updateFilteredList} selectedLanguage = {selectedLanguage} />
 
-            <footer>
-                <p>We bring you <strong>only the best products</strong> that can be randomly generated!</p>
-                <p>Content from <a href="https://marak.github.io/faker.js/">faker.js</a> with images from <a href="https://picsum.photos/">Lorem Picsum</a></p>
-            </footer>
-        </div>
+        //     <footer>
+        //         <p>We bring you <strong>only the best products</strong> that can be randomly generated!</p>
+        //         <p>Content from <a href="https://marak.github.io/faker.js/">faker.js</a> with images from <a href="https://picsum.photos/">Lorem Picsum</a></p>
+        //     </footer>
+        // </div>
+
+        <HashRouter>
+            <nav>
+                <Link to = '/'> Promotion</Link>
+                <Link to = '/category/1'> Winter Offer</Link> 
+                <Link to = '/category/2'> Spring Offer</Link> 
+                <Link to = '/category/3'> Autumn Offer</Link> 
+
+            </nav>
+
+            <Switch>
+                <Route path="/category/:categoryId" component={Categories}></Route>
+                <Route path="/" component={Promotion}></Route>
+            </Switch>
+        </HashRouter>
+        
     );
 };
 
